@@ -7,6 +7,7 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
@@ -271,6 +272,7 @@ func resourceRestAPICreate(d *schema.ResourceData, meta interface{}) error {
 		/* Only set during create for APIs that don't return sensitive data on subsequent retrieval */
 		d.Set("create_response", obj.apiResponse)
 	}
+	time.Sleep(40 * time.Second)
 	return err
 }
 
